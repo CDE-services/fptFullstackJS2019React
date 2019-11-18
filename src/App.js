@@ -7,10 +7,10 @@ const appStyle = {marginTop: '70px'}
 function App() {
   const str = 'React';
   return (
-    <div className="App" style={appStyle}>
+    <div className="App container" style={appStyle}>
       <h1>Hello {str} World!</h1>
       <button className="btn btn-primary">Stlac ma</button>
-      <Table className="Table" />
+      <Table />
     </div>
   );
 }
