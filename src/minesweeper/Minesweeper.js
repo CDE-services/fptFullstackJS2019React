@@ -44,7 +44,9 @@ class Minesweeper extends Component {
     this.setState({ field: field })
     if(field.gameState === GameStateEnum.WON) {
       this.addScoreToDb()
-    } else this.routeToScores()
+    } else if(field.gameState === GameStateEnum.LOST) {
+      this.routeToScores()
+    }
   }
 
   routeToScores() {
