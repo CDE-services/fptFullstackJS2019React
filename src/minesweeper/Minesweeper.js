@@ -76,7 +76,7 @@ class Minesweeper extends Component {
   handleNewGame = () => {
     const { history, match } = this.props
     this.setState({ field: new Field(10, 10, 10) })
-    history.push(`${match.url}/`)
+    history.push(`${match.url}`)
   }
 }
 
