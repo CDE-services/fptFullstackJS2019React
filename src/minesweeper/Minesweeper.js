@@ -4,6 +4,7 @@ import { Field, GameStateEnum } from './Core'
 import GameState from './GameState'
 import Score from './Score'
 import { Switch, Route, withRouter } from 'react-router-dom'
+import Comments from './Comments'
 
 class Minesweeper extends Component {
   constructor(props) {
@@ -30,6 +31,7 @@ class Minesweeper extends Component {
             <FieldComponent field={field}
                         handleOpen={this.handleOpen}
                         handleMark={this.handleMark}/>
+            <Comments />
           </Route>
         </Switch>
       </div>

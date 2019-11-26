@@ -7,13 +7,13 @@ const url = "mongodb://localhost:27017/comment";
 
 router.use(express.json());
 
-const schemaScore = new mongoose.Schema({
+const schemaComment = new mongoose.Schema({
   date: { type: Date },
   player: { type: String, require: true, trim: true, minlength: 3 },
   comment: { type: String, require: true, trim: true, minlength: 3 }
 });
 
-const Score = mongoose.model("score", schemaScore);
+const Comment = mongoose.model("comment", schemaComment);
 
 router.get("/", (req, res) => {
   mongoose
@@ -22,9 +22,9 @@ router.get("/", (req, res) => {
       useUnifiedTopology: true
     })
     .then(db => {
-      Score.find({}).then(scores => {
+      Comment.find({}).then(comments => {
         db.disconnect();
-        res.send(scores);
+        res.send(comments);
       });
     })
     .catch(() => {
@@ -33,19 +33,19 @@ router.get("/", (req, res) => {
 });
 
 router.post("/", (req, res) => {
-  const score = new Score({
+  const comment = new Comment({
     date: Date.now(),
     player: req.body.player,
-    points: req.body.points
+    comment: req.body.comment
   });
-  console.log(score);
+  console.log(comment);
   mongoose
     .connect(url, {
       useNewUrlParser: true,
       useUnifiedTopology: true
     })
     .then(db => {
-      score
+      comment
         .save()
         .then(inserted => {
           db.disconnect();
